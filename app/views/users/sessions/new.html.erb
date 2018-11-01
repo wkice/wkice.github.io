@@ -1,0 +1,43 @@
+<!-- Navigation -->
+    <nav style="font-size:20px;"class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a style="font-size:25px;" class="navbar-brand" href="/">정보통신공학과</a>
+        <% if user_signed_in? %>
+        <a  href="mypage/index">내정보</a>
+        <a href="/chat/index">심심이</a>
+        <a  href="http://wku.ac.kr">원광대학교</a>
+        <a href="https://www.inflearn.com/">프로그래밍 무료강좌</a>
+        <a href="https://likelion.net/ko">멋쟁이 사자처럼 소개</a>
+        <% else %>
+        <% end %>
+        <a style="color:#FFFFFF" class="btn btn-primary" href="/users/sign_up">회원가입</a>
+      </div>
+    </nav>
+<div style=" text-align:center">
+<h2>로그인</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :이메일 %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :비밀번호 %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :기억하기 %>
+    </div>
+  <% end -%>
+
+  <div class="actions" "btn btn-primary" >
+    <%= f.submit "로그인" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+</div>

@@ -1,0 +1,150 @@
+<!-- Navigation -->
+    <nav style="font-size:20px;"class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a style="font-size:25px;" class="navbar-brand" href="/">정보통신공학과</a>
+        <% if user_signed_in? %>
+        <a  href="/mypage/index">내정보</a>
+        <% else %>
+        <% end %>
+        <a href="/chat/index">심심이</a>
+        <a  href="http://wku.ac.kr">원광대학교</a>
+        <a href="https://www.inflearn.com/">프로그래밍 무료강좌</a>
+        <a href="https://likelion.net/ko">멋쟁이 사자처럼 소개</a>
+        <% else %>
+        <% end %>
+        <a style="color:#FFFFFF" class="btn btn-primary" href="/users/sign_in">로그인</a>
+      </div>
+    </nav>
+<div style="background-color:#F7F8E0">     
+<div style="text-align:center">
+<h2>개인정보 수정</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="field">
+    <%= f.label "닉네임" %><br/>
+    <%= f.text_field :nickname,:required => true %><br/>
+</div>
+<%= f.label :성별%><br>
+<div class="btn-group" data="buttons">
+    <p style="margin-bottom:2;"></p>
+    <br><label class="radio_button ">남자
+       <%= f.radio_button :gender, '남자', checked: true %>
+    </label>
+    <label class="radio_button "> 여자
+       <%= f.radio_button :gender, '여자', checked: true %>
+    </label>
+
+</div>
+  <br><br>
+  <div class="field">
+    <%= f.label :이메일 %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :비밀번호 %> <i>(변경하지 않으려는 경우 비워 두십시오.)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em>최소<%= @minimum_password_length %>자</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :비밀번호_확인 %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :현재_비밀번호 %> <i>(변경 사항을 확인하려면 현재 비밀번호가 필요합니다.)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "정보수정" %>
+  </div>
+<% end %>
+<p><%= button_to "탈퇴하기", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "뒤로가기", :back %>
+  </div>
+</div>
+<!-- Call to Action -->
+    <section class="call-to-action text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+                <div style="font-size:30px; text-align:center;">
+
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+      <div class="container">
+        <div class="row">
+          </div>
+                <body style="text-align:center;" onload="printClock()">
+                  <div style="color:#666;font-size:100px; text-align:center;" id="clock">
+	</div><br><br><br></br><p style="font-size:70px;">현재시간</p>  
+	</div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fab fa-facebook fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-instagram fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
